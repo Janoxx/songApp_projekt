@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 
 class Changelog extends StatefulWidget {
-  const Changelog({ Key? key }) : super(key: key);
+  const Changelog({Key? key}) : super(key: key);
 
   @override
   _ChangelogState createState() => _ChangelogState();
 }
 
 class _ChangelogState extends State<Changelog> {
-
-Widget ChangelogBody(BuildContext context){
+  Widget changelogBody(BuildContext context) {
     return ListView(
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Version 1.0.0", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 28)),
+          padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.2",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n" +
-              " - Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n" + 
-              "- Erstellung erste Sidebar"
-          ),
+          padding: EdgeInsets.all(8.0),
+          child: Text("- Erstellung der AppInfo \n" +
+              "- Beschreibung der App Funktionen"),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.1",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+              "- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n" +
+                  " - Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n" +
+                  "- Erstellung der Sidebar"),
         ),
       ],
     );
@@ -30,13 +43,12 @@ Widget ChangelogBody(BuildContext context){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.red,
-        centerTitle: true,
-        title: Text('Change-Log'),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.red,
+          centerTitle: true,
+          title: const Text('Change-Log'),
         ),
-        body: ChangelogBody(context)
-    );
+        body: changelogBody(context));
   }
 }

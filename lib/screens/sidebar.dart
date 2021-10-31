@@ -1,8 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:songapp_projekt/screens/appinfo.dart';
 import 'package:songapp_projekt/screens/changelog.dart';
 import 'package:songapp_projekt/screens/settings.dart';
-
 
 class Sidebar extends StatefulWidget {
   const Sidebar({Key? key}) : super(key: key);
@@ -63,36 +64,36 @@ class _SidebarState extends State<Sidebar> {
       child: ListView(
         children: [
           drawerHeader(context),
-           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Einstellungen"),
-            trailing: Icon(Icons.arrow_right),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-              }
-          ),
+          ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Einstellungen"),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Settings()));
+              }),
           const Divider(
             thickness: 1.5,
           ),
-           ListTile(
-            leading: Icon(Icons.timer),
-            title: Text("Changelog"),
-            trailing: Icon(Icons.arrow_right),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Changelog()));
-              }
-          ),
+          ListTile(
+              leading: Icon(Icons.timer),
+              title: Text("Changelog"),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Changelog()));
+              }),
           const Divider(
             thickness: 1.5,
           ),
-           ListTile(
-            leading: Icon(Icons.info),
-            title: Text("App Info"),
-            trailing: Icon(Icons.arrow_right),
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AppInfo()));
-              }
-          ),
+          ListTile(
+              leading: Icon(Icons.info),
+              title: Text("App Info"),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AppInfo()));
+              }),
           const Divider(
             thickness: 1.5,
           ),
