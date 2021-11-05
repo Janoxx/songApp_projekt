@@ -22,28 +22,31 @@ class _AppInfoState extends State<AppInfo> {
       body: ListView(
         children: [
           // --- Zeige Logo Asset an ---
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Image(
-                    image: AssetImage('assets/songApp-Logo_rounded.png'),
-                    width: 250,
-                    height: 250,
-                  ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Image(
+                  image: AssetImage('assets/songApp-Logo_rounded.png'),
+                  width: 250,
+                  height: 250,
                 ),
-                Text("Song App", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-                Text("Version 0.0.2", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
-              ],
-            ),
-          // --- App Info Text ---
+              ),
+              // --- App Info Text ---
+              Text("Song App",
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
+              Text("Version 0.0.2",
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
+            ],
+          ),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Divider(thickness: 1.5),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(8,0,8,8),
+            padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text("So funktioniert es:",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
           ),
