@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:songapp_projekt/screens/appinfo.dart';
@@ -34,19 +34,26 @@ class _SidebarState extends State<Sidebar> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-            Colors.red,
-            Colors.redAccent,
-            Colors.redAccent,
-          ],
+                Colors.red,
+                Colors.redAccent,
+                Colors.redAccent,
+              ],
               stops: [
-            0.4,
-            0.6,
-            0.8
-          ])),
+                0.4,
+                0.6,
+                0.8
+              ]
+            ),
+          ),
       child: Column(
         children: [
-          materialIcon(context),
-          const Padding(
+          //materialIcon(context),
+          Image(
+            image: AssetImage('assets/songApp-Logo_rounded.png'),
+            width: 100,
+            height: 100,
+          ),
+           Padding(
             padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
             child: Text(
               "Song App",
