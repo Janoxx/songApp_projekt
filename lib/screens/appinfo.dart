@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class AppInfo extends StatefulWidget {
@@ -34,7 +33,7 @@ class _AppInfoState extends State<AppInfo> {
                   ),
                 ),
                 Text("Song App", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-                Text("Version 0.0.2", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
+                Text("Version 0.0.3", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
               ],
             ),
           // --- App Info Text ---
