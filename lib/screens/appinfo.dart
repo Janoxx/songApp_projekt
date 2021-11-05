@@ -49,7 +49,7 @@ class _AppInfoState extends State<AppInfo> {
           Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(
-                "Hier kannst du nach deinen Lieblingskünstler und Lieblingskünstlerinnen suchen, ihenen folgen und ihre Profile aufrufen."),
+                "Hier kannst du nach deinen Lieblingskünstler und Lieblingskünstlerinnen suchen, ihnen folgen und ihre Profile aufrufen."),
           ),
           Padding(
             padding: EdgeInsets.all(8.0),
