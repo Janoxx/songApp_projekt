@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// --- Init Main Widgets ---
 class Follows extends StatefulWidget {
   const Follows({ Key? key }) : super(key: key);
 

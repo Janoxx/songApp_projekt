@@ -5,6 +5,7 @@ import 'package:songapp_projekt/screens/appinfo.dart';
 import 'package:songapp_projekt/screens/changelog.dart';
 import 'package:songapp_projekt/screens/settings.dart';
 
+// --- Init Main Widget ---
 class Sidebar extends StatefulWidget {
   const Sidebar({Key? key}) : super(key: key);
 
@@ -13,20 +14,8 @@ class Sidebar extends StatefulWidget {
 }
 
 class _SidebarState extends State<Sidebar> {
-  Widget materialIcon(BuildContext context) {
-    return const Material(
-      borderRadius: BorderRadius.all(Radius.circular(50)),
-      elevation: 5,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Icon(
-          Icons.music_note_rounded,
-          size: 60,
-        ),
-      ),
-    );
-  }
 
+// --- Custom Drawer Header für die Sidebar ---
   Widget drawerHeader(BuildContext context) {
     return DrawerHeader(
       decoration: const BoxDecoration(
@@ -47,7 +36,6 @@ class _SidebarState extends State<Sidebar> {
           ),
       child: Column(
         children: [
-          //materialIcon(context),
           Image(
             image: AssetImage('assets/songApp-Logo_rounded.png'),
             width: 100,
@@ -65,6 +53,7 @@ class _SidebarState extends State<Sidebar> {
     );
   }
 
+  // --- Main Sidebar Widget ---
   @override
   Widget build(BuildContext context) {
     return Drawer(

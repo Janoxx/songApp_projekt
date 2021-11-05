@@ -13,13 +13,26 @@ class _ChangelogState extends State<Changelog> {
       children: const [
         Padding(
           padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.3",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("- Erstellung Dashboard Design \n \n" +
+                      "- Einbindung Logo in Sidebar und App Info"),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.2",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text("- Erstellung der AppInfo \n" +
-              "- Beschreibung der App Funktionen"),
+          child: Text("- Erstellung der AppInfo \n \n" +
+                      "- Beschreibung der App Funktionen"),
         ),
         Divider(
           thickness: 1.5,
@@ -32,8 +45,8 @@ class _ChangelogState extends State<Changelog> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-              "- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n" +
-                  " - Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n" +
+                  "- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n \n" +
+                  "- Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n \n" +
                   "- Erstellung der Sidebar"),
         ),
       ],

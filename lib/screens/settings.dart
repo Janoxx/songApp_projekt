@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
+// --- Init Main Widget ---
 class Settings extends StatefulWidget {
   const Settings({ Key? key }) : super(key: key);
 

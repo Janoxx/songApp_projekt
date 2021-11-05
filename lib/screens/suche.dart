@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// --- Init Main Widget ---
 class Suche extends StatefulWidget {
   const Suche({ Key? key }) : super(key: key);
 
