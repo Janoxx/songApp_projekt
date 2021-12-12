@@ -22,16 +22,13 @@ class _SidebarState extends State<Sidebar> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
+              stops: [0.1, 0.4, 0.7, 0.9],
               colors: [
-                Colors.red,
-                Colors.redAccent,
-                Colors.redAccent,
+                Color(0xFFC90000),
+                Color(0xFFD40000),
+                Color(0xFFE80000),
+                Color(0xFFFF0000)
               ],
-              stops: [
-                0.4,
-                0.6,
-                0.8
-              ]
             ),
           ),
       child: Column(
