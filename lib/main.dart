@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:songapp_projekt/home.dart';
+import 'package:songapp_projekt/screens/splashscreen.dart';
 
 void main() {
   runApp(const SongApp());
@@ -17,7 +17,7 @@ class SongApp extends StatelessWidget {
         primarySwatch: Colors.red,
         brightness: Brightness.dark
       ),
-      home: const Home(),
+      home: const Splashscreen(),
       debugShowCheckedModeBanner: false,
     );
   }
