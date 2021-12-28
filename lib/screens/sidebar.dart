@@ -14,23 +14,22 @@ class Sidebar extends StatefulWidget {
 }
 
 class _SidebarState extends State<Sidebar> {
-
 // --- Custom Drawer Header für die Sidebar ---
   Widget drawerHeader(BuildContext context) {
     return DrawerHeader(
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                Color(0xFFC90000),
-                Color(0xFFD40000),
-                Color(0xFFE80000),
-                Color(0xFFFF0000)
-              ],
-            ),
-          ),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.1, 0.4, 0.7, 0.9],
+          colors: [
+            Color(0xFFC90000),
+            Color(0xFFD40000),
+            Color(0xFFE80000),
+            Color(0xFFFF0000)
+          ],
+        ),
+      ),
       child: Column(
         children: [
           Image(
@@ -38,10 +37,10 @@ class _SidebarState extends State<Sidebar> {
             width: 100,
             height: 100,
           ),
-           Padding(
+          Padding(
             padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
             child: Text(
-              "Song App",
+              "ReleaseRadar",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
             ),
           )

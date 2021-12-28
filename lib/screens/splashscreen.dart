@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:songapp_projekt/home.dart';
 
 class SplashscreenFunctions {
-
   // --- Simuliere Laden der App und lade Homescreen  --> Dauer: 2 Sekunden ---
   initLoading(BuildContext context) {
     Future.delayed(Duration(seconds: 2), () async {
@@ -13,15 +12,14 @@ class SplashscreenFunctions {
 }
 
 class Splashscreen extends StatefulWidget {
-  const Splashscreen({ Key? key }) : super(key: key);
+  const Splashscreen({Key? key}) : super(key: key);
   @override
   _SplashscreenState createState() => _SplashscreenState();
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-
   // --- InitState---
-  @override 
+  @override
   void initState() {
     super.initState();
     SplashscreenFunctions().initLoading(context);
@@ -31,23 +29,25 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget startLogo(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: Image(
-              image: AssetImage('assets/songApp-Logo_rounded.png'),
-              width: 250,
-              height: 250,
-            ),
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Image(
+            image: AssetImage('assets/songApp-Logo_rounded.png'),
+            width: 250,
+            height: 250,
           ),
-          Text("Song App", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-          Text("Version 0.0.3", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
-          SizedBox(height: 30),
-          CircularProgressIndicator(
-            backgroundColor: Colors.white,
-          )
-        ],
-      );
+        ),
+        Text("ReleaseRadar",
+            style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
+        Text("Version 0.0.5",
+            style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
+        SizedBox(height: 30),
+        CircularProgressIndicator(
+          backgroundColor: Colors.white,
+        )
+      ],
+    );
   }
 
   @override
@@ -67,8 +67,7 @@ class _SplashscreenState extends State<Splashscreen> {
               ],
             ),
           ),
-          child: Center(child: startLogo(context))
-        ),
+          child: Center(child: startLogo(context))),
     );
   }
 }
