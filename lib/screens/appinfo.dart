@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:songapp_projekt/utils/globals.dart' as globals;
 
 class AppInfo extends StatefulWidget {
   const AppInfo({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _AppInfoState extends State<AppInfo> {
               // --- App Info Text ---
               Text("ReleaseRadar",
                   style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-              Text("Version 0.0.5",
+              Text(globals.currentVersion,
                   style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
             ],
           ),

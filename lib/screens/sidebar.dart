@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:songapp_projekt/screens/appinfo.dart';
 import 'package:songapp_projekt/screens/changelog.dart';
 import 'package:songapp_projekt/screens/settings.dart';
+import 'package:songapp_projekt/screens/testPage.dart';
 
 // --- Init Main Widget ---
 class Sidebar extends StatefulWidget {
@@ -85,6 +86,17 @@ class _SidebarState extends State<Sidebar> {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AppInfo()));
+              }),
+          const Divider(
+            thickness: 1.5,
+          ),
+          ListTile(
+              leading: Icon(Icons.developer_mode),
+              title: Text("Developer Test-Seite"),
+              trailing: Icon(Icons.arrow_right),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TestPage()));
               }),
           const Divider(
             thickness: 1.5,

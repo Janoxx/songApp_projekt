@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:songapp_projekt/home.dart';
+import 'package:songapp_projekt/utils/globals.dart' as globals;
 
 class SplashscreenFunctions {
   // --- Simuliere Laden der App und lade Homescreen  --> Dauer: 2 Sekunden ---
@@ -40,7 +41,7 @@ class _SplashscreenState extends State<Splashscreen> {
         ),
         Text("ReleaseRadar",
             style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-        Text("Version 0.0.5",
+        Text(globals.currentVersion,
             style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
         SizedBox(height: 30),
         CircularProgressIndicator(

@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Artistinfo extends StatefulWidget {
   const Artistinfo({ Key? key }) : super(key: key);
@@ -10,6 +10,15 @@ class Artistinfo extends StatefulWidget {
 }
 
 class _ArtistinfoState extends State<Artistinfo> {
+
+// --- Test Artist URL ---
+static const String url = "https://open.spotify.com/artist/0LhHRmSd1EYM5QdNeNnCoQ?si=dS9gcXlGTEmRhUliYZYSeg";
+
+    // --- URL Launcher ---
+    void launchURL() async {
+      if (!await launch(url)) throw 'Konnte $url nicht öffnen!';
+    }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -43,9 +52,9 @@ class _ArtistinfoState extends State<Artistinfo> {
       ),
       ListTile(leading: Icon(Icons.group), title: Text("2,527,560"), trailing: Text("Follower"),),
       ListTile(leading: Icon(Icons.show_chart), title: Text("90"), trailing: Text("Popularity Indicator"),),
-      ElevatedButton(child: Text("Künstler*in Bei Spotify Anzeigen"),onPressed: () {
-        
-      },),
+      ElevatedButton(
+      child: Text("Künstler*in Bei Spotify Anzeigen"),
+      onPressed: () {launchURL();},),
       ListTile(leading: Icon(Icons.note_alt), title: TextField(maxLines: null, maxLength: 200,),),
       ],
     ),

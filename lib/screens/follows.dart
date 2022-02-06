@@ -12,30 +12,43 @@ class Follows extends StatefulWidget {
 }
 
 class _FollowsState extends State<Follows> {
-  Icon followIcon = Icon(Icons.check_box,size: 35,);
+  Icon followIcon = Icon(
+    Icons.check_box,
+    size: 35,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(children: [
-        ListTile( onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Artistinfo()));
-        },
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Artistinfo()));
+          },
           leading: CircleAvatar(
               radius: 20,
               foregroundImage: NetworkImage(
                   "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
           title: Text("Darude"),
           subtitle: Text("Gefolgt seit: xx.xx.xxxx"),
-          trailing: IconButton(icon: followIcon, onPressed: (){
-            setState(() {
-              if(followIcon.icon == Icons.check_box) {
-               followIcon = Icon(Icons.check_box_outline_blank, size: 35,);
-              }
-              else {
-                followIcon = Icon(Icons.check_box,size: 35,);
-              }
-            });
-          },),
+          trailing: IconButton(
+            icon: followIcon,
+            onPressed: () {
+              setState(() {
+                if (followIcon.icon == Icons.check_box) {
+                  followIcon = Icon(
+                    Icons.check_box_outline_blank,
+                    size: 35,
+                  );
+                } else {
+                  followIcon = Icon(
+                    Icons.check_box,
+                    size: 35,
+                  );
+                }
+              });
+            },
+          ),
         ),
         Divider(thickness: 1.5),
       ]),

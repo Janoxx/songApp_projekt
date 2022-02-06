@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
 class Changelog extends StatefulWidget {
@@ -10,14 +11,30 @@ class Changelog extends StatefulWidget {
 class _ChangelogState extends State<Changelog> {
   Widget changelogBody(BuildContext context) {
     return ListView(
-      children: const [
+      children: [
+         Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.6",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "- Erstelunng base_provider (Datenbank) + Test-Insert \n\n"
+            "- Erstellung APIProvider (GET-Requests) --> Token fehlt noch\n\n"
+            "- Erstellung Dev-Test-Seite --> API Output\n\n"
+            "- Request 'Layout' erstellt --> FutureBuilder\n\n"
+            "- Globale Versionierung"
+          ),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.5",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),
-        
-        
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung Followliste \n \n"
@@ -27,14 +44,11 @@ class _ChangelogState extends State<Changelog> {
         Divider(
           thickness: 1.5,
         ),
-
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.4",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),
-        
-        
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung Splashscreen \n\n"

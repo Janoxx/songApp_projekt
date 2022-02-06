@@ -1,7 +1,20 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
-
 import 'package:flutter/material.dart';
+import 'package:songapp_projekt/providers/base_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// class DashboardFunctions {
+
+// DBProvider dbProvider = DBProvider();
+//   // --- Test Insert wenn Dashboard geladen wird ---
+//   insertTest() async {
+//     String query = "INSERT INTO tracks (trackID, trackName, trackURL, trackDuration, trackRelease, artistID, albumID, test) VALUES ('1', 'test', 'http://www.test.de/song', '8546454', '2020-01-01', '1', '1', '100')";
+//     final db = await dbProvider.database;
+//     final res = db.rawInsert(query);
+//     return res;
+//   }
+// }
+
 
 // --- Init Widget ---
 class Dashboard extends StatefulWidget {
@@ -12,6 +25,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+// // --- InitState---
+//   @override
+//   void initState() {
+//     super.initState();
+//     DashboardFunctions().insertTest();
+//   }
+
   // --- Zeitraum Anzeige ganz oben im Dashboard, bleibt angepinnt ---
   Widget dashboardDateBox(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                   fontSize: 18,
                   color: Colors.black),
             ),
-            Text("29.11.2021 - 05.12.2021",
+            Text("07.02.2022 - 13.02.2022",
                 style: TextStyle(fontSize: 14, color: Colors.black)),
           ],
         ),
@@ -68,15 +89,8 @@ class _DashboardState extends State<Dashboard> {
       if (!await launch(url)) throw 'Konnte $url nicht öffnen!';
     }
 
-    const String url = "https://open.spotify.com/track/6Sy9BUbgFse0n0LPA5lwy5?si=9ef71ba726a74aea";
-
-    // --- URL Launcher ---
-    void launchURL() async {
-  if (!await launch(url)) throw 'Konnte $url nicht öffnen!';
-}
-
     // --- OnRefresh Funktion ---
-    Future<void> test() async {
+    Future<void> refresh() async {
       await Future.delayed(Duration(seconds: 3));
     }
 
@@ -86,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
         dashboardDateBox(context),
         Expanded(
           child: RefreshIndicator(
-            onRefresh: test,
+            onRefresh: refresh,
             child: ListView(
               children: [
                 ListTile(
@@ -105,6 +119,183 @@ class _DashboardState extends State<Dashboard> {
                   padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                   child: Divider(thickness: 1.5),
                 ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
+                  trailing: Text("03.12.2021"),
+                  onTap: () {
+                    launchURL();
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  child: Divider(thickness: 1.5),
+                ),
+                
               ],
             ),
           ),
