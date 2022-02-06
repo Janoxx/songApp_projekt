@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.songapp_projekt">
    <application
-        android:label="songapp_projekt"
+        android:label="ReleaseRadar"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

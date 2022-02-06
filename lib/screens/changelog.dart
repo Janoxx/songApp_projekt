@@ -19,7 +19,8 @@ class _ChangelogState extends State<Changelog> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung Splashscreen \n\n"
-                      "- Suchleiste hinzugefügt"
+                      "- Suchleiste hinzugefügt \n\n"
+                      "- URL's können geöffnet werden"
           ),
         ),
         Divider(

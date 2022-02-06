@@ -32,8 +32,8 @@ class _AppInfoState extends State<AppInfo> {
                     height: 250,
                   ),
                 ),
-                Text("Song App", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
-                Text("Version 0.0.3", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
+                Text("ReleaseRadar", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 36)),
+                Text("Version 0.0.4", style: TextStyle(fontWeight: FontWeight.w300, fontSize: 12)),
               ],
             ),
           // --- App Info Text ---

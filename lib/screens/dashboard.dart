@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 import 'package:flutter/material.dart';
-import 'package:songapp_projekt/screens/changelog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // --- Init Widget ---
 class Dashboard extends StatefulWidget {
@@ -59,10 +59,16 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
 
+    const String url = "https://open.spotify.com/track/6Sy9BUbgFse0n0LPA5lwy5?si=9ef71ba726a74aea";
+
+    // --- URL Launcher ---
+    void launchURL() async {
+  if (!await launch(url)) throw 'Konnte $url nicht öffnen!';
+}
+
     // --- OnRefresh Funktion ---
     Future<void> test() async {
       await Future.delayed(Duration(seconds: 3));
-      print("test");
     }
 
     return Scaffold(
@@ -77,12 +83,13 @@ class _DashboardState extends State<Dashboard> {
                 ListTile(
                   leading: CircleAvatar(
                       radius: 20,
-                      foregroundImage: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/LGBTQ%2B_rainbow_flag_Quasar_%22Progress%22_variant.svg/2560px-LGBTQ%2B_rainbow_flag_Quasar_%22Progress%22_variant.svg.png")
+                      foregroundImage: NetworkImage("https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")
                       ),
-                  title: Text("Drachenlord"),
-                  subtitle: Text("Skrr Skrr in meinem Audi"),
+                  title: Text("Darude"),
+                  subtitle: Text("Sandstorm"),
                   trailing: Text("05.11.2021"),
-                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Changelog()));
+                  onTap: () {
+                    launchURL();
                   },
                 ),
                 Padding(

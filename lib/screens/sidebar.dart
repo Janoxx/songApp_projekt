@@ -41,7 +41,7 @@ class _SidebarState extends State<Sidebar> {
            Padding(
             padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
             child: Text(
-              "Song App",
+              "ReleaseRadar",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
             ),
           )
