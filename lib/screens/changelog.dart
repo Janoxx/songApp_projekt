@@ -13,15 +13,33 @@ class _ChangelogState extends State<Changelog> {
       children: const [
         Padding(
           padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.5",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        
+        
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("- Erstellung Followliste \n \n"
+                      "- Erstellung Künstler*innenprofil"
+          ),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
+
+        Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.4",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),
+        
+        
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung Splashscreen \n\n"
-                      "- Suchleiste hinzugefügt \n\n"
-                      "- URL's können geöffnet werden"
-          ),
+              "- Suchleiste hinzugefügt \n\n"
+              "- URL's können geöffnet werden"),
         ),
         Divider(
           thickness: 1.5,
@@ -34,7 +52,7 @@ class _ChangelogState extends State<Changelog> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung Dashboard Design \n \n"
-                      "- Einbindung Logo in Sidebar und App Info"),
+              "- Einbindung Logo in Sidebar und App Info"),
         ),
         Divider(
           thickness: 1.5,
@@ -47,7 +65,7 @@ class _ChangelogState extends State<Changelog> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("- Erstellung der AppInfo \n \n"
-                      "- Beschreibung der App Funktionen"),
+              "- Beschreibung der App Funktionen"),
         ),
         Divider(
           thickness: 1.5,
@@ -60,9 +78,9 @@ class _ChangelogState extends State<Changelog> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-                  "- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n \n"
-                  "- Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n \n"
-                  "- Erstellung der Sidebar"),
+              "- Erstellung des 'Grundgerüsts' mit Default AppBar und BottomNavigationBar --> home.dart \n \n"
+              "- Anlegen grundlegender Seiten (Dashboard, Suche, Folge-Ich, Einstellungen, App Info und Changelog) \n \n"
+              "- Erstellung der Sidebar"),
         ),
       ],
     );

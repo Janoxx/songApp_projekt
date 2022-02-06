@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -41,13 +42,14 @@ class _DashboardState extends State<Dashboard> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Icon(Icons.calendar_today, color: Colors.black),
-            Text("Deine Releases vom: ",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black),
-                    ),
-            Text("01.11.2021 - 07.11.2021",
+            Text(
+              "Deine Releases vom: ",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.black),
+            ),
+            Text("29.11.2021 - 05.12.2021",
                 style: TextStyle(fontSize: 14, color: Colors.black)),
           ],
         ),
@@ -58,6 +60,13 @@ class _DashboardState extends State<Dashboard> {
   // --- Main Widget ---
   @override
   Widget build(BuildContext context) {
+    const String url =
+        "https://open.spotify.com/track/6Sy9BUbgFse0n0LPA5lwy5?si=9ef71ba726a74aea";
+
+    // --- URL Launcher ---
+    void launchURL() async {
+      if (!await launch(url)) throw 'Konnte $url nicht öffnen!';
+    }
 
     const String url = "https://open.spotify.com/track/6Sy9BUbgFse0n0LPA5lwy5?si=9ef71ba726a74aea";
 
@@ -72,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
     }
 
     return Scaffold(
-      body: Column(
+        body: Column(
       children: [
         dashboardDateBox(context),
         Expanded(
@@ -83,11 +92,11 @@ class _DashboardState extends State<Dashboard> {
                 ListTile(
                   leading: CircleAvatar(
                       radius: 20,
-                      foregroundImage: NetworkImage("https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")
-                      ),
+                      foregroundImage: NetworkImage(
+                          "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
                   title: Text("Darude"),
                   subtitle: Text("Sandstorm"),
-                  trailing: Text("05.11.2021"),
+                  trailing: Text("03.12.2021"),
                   onTap: () {
                     launchURL();
                   },
