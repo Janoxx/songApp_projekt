@@ -11,14 +11,59 @@ class TestPage extends StatefulWidget {
 
 class _TestPageState extends State<TestPage> {
   // --- InitState---
-  @override
-  void initState() {
-    super.initState();
-    APIProvider().getRequest();
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   APIProvider().getRequest();
+  //}
+  String stringData = "hier gibt es nichts zu sehen";
+
+  Future<List<dynamic>> test(){
+    return APIProvider().getRequest();
+  }
+
+  Future<void> refresh(BuildContext context) async {
+    await Future.delayed(Duration(seconds: 1));
+    await APIProvider().getRequest();
+
+    setState(() {
+      TestPage();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.red,
+        centerTitle: true,
+        title: const Text('Developer Test-Seite'),
+      ),
+      body: ListView(
+        children: [
+          ElevatedButton(onPressed: (){refresh(context);}, child: Text("Hortler"),style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red))),
+          FutureBuilder<List<dynamic>>(
+            future: test(),
+            builder: (BuildContext context, AsyncSnapshot snapshot){
+              if(!snapshot.hasData){
+                return CircularProgressIndicator();
+              }
+              else {
+                return Text(snapshot.data[0].toString());
+              }
+            }
+            ),
+           ],
+      )
+      
+
+        
+    );
+  }
+
+  /*  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -40,10 +85,11 @@ class _TestPageState extends State<TestPage> {
                     return Text(
                         "Request-Output: \n\n " + snapshot.data.toString());
                   },
-                );
+                ); 
               }
             }),
       ),
     );
-  }
+  } */
+
 }

@@ -39,6 +39,11 @@ class DBProvider {
       '''
         CREATE TABLE settings(settingID INTEGER PRIMARY KEY)
       '''
+
+
+      '''
+        CREATE TABLE test(ID INTEGER PRIMARY KEY, name TEXT, rarity TEXT, special_skill TEXT, debut_tour TEXT, date_added TEXT)
+      ''',
     ];
 
     const migrationScripts = [];
@@ -66,4 +71,7 @@ class DBProvider {
     final path = join(documentsDirectory.path, 'releaseRadar.db');
     await deleteDatabase(path);
   }
+
+  
+
 }
