@@ -12,6 +12,20 @@ class _ChangelogState extends State<Changelog> {
   Widget changelogBody(BuildContext context) {
     return ListView(
       children: [
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text("Version 0.0.7",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "- Erstellung einer API-Test Seite (Daten von Test-API benutzerdefiniert abrufen und in Liste anzeigen)"
+          ),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
          Padding(
           padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.6",
