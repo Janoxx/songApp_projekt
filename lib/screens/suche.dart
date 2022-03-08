@@ -1,10 +1,19 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unrelated_type_equality_checks, unnecessary_this
 import 'package:flutter/material.dart';
+import 'package:songapp_projekt/screens/artistinfo.dart';
+import 'package:songapp_projekt/utils/globals.dart' as globals;
+import 'package:songapp_projekt/providers/api_provider.dart';
 
 class SucheFunctions {
   /// --- Suchfunktion ---
-  doSearch() {
-    // H A L O
+  Future<List> searchArtist() async {
+    globals.functionToCall = "search.php?s=";
+    return APIProvider().getRequest();
+  }
+
+  // --- Wenn keine Suche aktiv ---
+  Future<List> noSearch() async {
+    return [];
   }
 }
 
@@ -20,6 +29,7 @@ class _SucheState extends State<Suche> {
   // --- Inits ---
   TextEditingController searchController = TextEditingController();
   Icon searchIcon = Icon(Icons.search, color: Colors.white);
+  Icon followIcon = Icon(Icons.check_box, size: 35);
 
   // --- Widget Suchleiste ---
   Widget searchBar(BuildContext context) {
@@ -38,25 +48,30 @@ class _SucheState extends State<Suche> {
         ],
       ),
       child: TextField(
-        autocorrect: false,
-        controller: searchController,
-        obscureText: false,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(top: 14.0),
-          prefixIcon: searchIcon,
-          hintText: 'Suche...',
-          hintStyle: TextStyle(color: Colors.white),
-        ),
-        onSubmitted: SucheFunctions().doSearch(),
-      ),
+          autocorrect: false,
+          controller: searchController,
+          obscureText: false,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(top: 14.0),
+            prefixIcon: searchIcon,
+            hintText: 'Suche...',
+            hintStyle: TextStyle(color: Colors.white),
+          ),
+          onSubmitted: (filter) {
+            globals.search = searchController.text.replaceAll(" ", "_");
+            globals.isSearchTrue = true;
+            setState(() {
+              Suche();
+            });
+          }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -65,14 +80,62 @@ class _SucheState extends State<Suche> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 searchBar(context),
-                // SizedBox(height: 10),
-                // Text(
-                //   "Deine Suchen: ",
-                //   style: TextStyle(
-                //     fontSize: 24,
-                //     fontWeight: FontWeight.w600,
-                //   ),
-                // ),
+                SizedBox(height: 10),
+                Divider(thickness: 1.5),
+                Expanded(
+                    child: FutureBuilder<List>(
+                        future: globals.isSearchTrue == false? SucheFunctions().noSearch(): SucheFunctions().searchArtist(),
+                        builder:(BuildContext context, AsyncSnapshot snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(child: Text("Keinen Künstler gefunden!"));
+                          } else {
+                            return ListView.separated(
+                              separatorBuilder: (context, index) => Divider(thickness: 1.5),
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (BuildContext context, int i) {
+                                return Column(
+                                  children: [
+                                    Text("Gefundene Künstler:"),
+                                    ListTile(
+                                      onTap: (){
+                                        globals.profileName = snapshot.data[i]["strArtist"] ?? "Kein Name gefunden!";
+                                        globals.profileImage = snapshot.data[i]["strArtistThumb"] ?? "https://cdn.icon-icons.com/icons2/1674/PNG/512/questionmarkcircle_110957.png";
+                                        globals.profileBio = snapshot.data[i]["strBiographyDE"] ?? snapshot.data[i]["strBiographyEN"] ?? "Keine Biographie gefunden!";
+                                        globals.profileBirthday = snapshot.data[i]["intBornYear"] ?? "Kein Geburtsjahr gefunden!";
+                                        globals.profileOrigin = snapshot.data[i]["strCountryCode"] ?? "Kein Herkunftsland gefunden!";
+                                        globals.profileStyle = snapshot.data[i]["strStyle"] ?? snapshot.data[i]["strGenre"] ?? "Kein Genre gefunden!";
+                                        globals.profileBanner = snapshot.data[i]["strBanner"] ?? "";
+
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Artistinfo()));
+                                      },
+                                      leading: CircleAvatar(radius: 30, foregroundImage: NetworkImage(snapshot.data[i]["strArtistThumb"] ?? "https://cdn.icon-icons.com/icons2/1674/PNG/512/questionmarkcircle_110957.png")),
+                                      title:Text(snapshot.data[i]["strArtist"]),
+                                      trailing: IconButton(
+                                        icon: followIcon,
+                                        onPressed: () {
+                                          setState(() {
+                                            if (followIcon.icon ==
+                                                Icons.check_box) {
+                                              followIcon = Icon(
+                                                Icons.check_box_outline_blank,
+                                                size: 35,
+                                              );
+                                            } else {
+                                              followIcon = Icon(
+                                                Icons.check_box,
+                                                size: 35,
+                                              );
+                                            }
+                                          });
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        }))
               ],
             ),
           ),

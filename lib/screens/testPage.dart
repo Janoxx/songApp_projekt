@@ -19,7 +19,7 @@ class _TestPageState extends State<TestPage> {
     globals.arg1 = arg1Controller.text;
     globals.arg2 = arg2Controller.text;
     debugPrint(globals.arg1 + " - " + globals.arg2);
-    return APIProvider().getRequest();
+    return APIProvider().getMarioRequest();
   }
 
   @override
@@ -62,14 +62,6 @@ class _TestPageState extends State<TestPage> {
               },
               child: Text("Sende API Request"),
             ),
-
-             ElevatedButton(
-              onPressed: () {
-                APIProvider().getToken();
-              },
-              child: Text("postmanRequest"),
-            ),
-
             Divider(thickness: 1.5),
             Text("- API-Output - ",
                 textAlign: TextAlign.center,
