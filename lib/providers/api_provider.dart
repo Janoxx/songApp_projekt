@@ -19,6 +19,27 @@ class APIProvider {
   //   return postRequest;
   // }
 
+static String clientID = "49cf32a4b5b24b4b8541f8bdaabe4720";
+static String clientSecret = "ac8327dcf4984c8597ed8dec9cea8258";
+
+
+  // --- GET Token ---
+  Future<List> getToken() async {
+    String spotifyTokenURL = "https://accounts.spotify.com/api/token";
+
+    // --- Sende Request ---
+    var postRequest = await http.post(Uri.parse(spotifyTokenURL), headers: {"Content-Type":"application/x-www-form-urlencoded", "Authorization":clientID + ":" + clientSecret}, body: "grant_type=client_credentials");
+
+  // --- Dekodiere Request (JSON) ---
+    var jsonData = json.decode(postRequest.body);
+    debugPrint(jsonData.toString());
+
+  // -- Gebe Request Inhalt zurück ---
+    return jsonData;
+  }
+
+
+
   // --- GET Request an Spotify API ---
   Future<List> getRequest() async {
 
@@ -37,5 +58,5 @@ class APIProvider {
 
     // -- Gebe Request Inhalt zurück ---
     return jsonData;
-  }
+  }  
 }
