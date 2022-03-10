@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:songapp_projekt/screens/artistinfo.dart';
 import 'package:songapp_projekt/utils/globals.dart' as globals;
 import 'package:songapp_projekt/providers/api_provider.dart';
+import 'package:songapp_projekt/providers/base_provider.dart';
+import 'package:songapp_projekt/models/artistModel.dart';
 
 class SucheFunctions {
-  /// --- Suchfunktion ---
+  // --- init DB Provider ---
+  DBProvider dbProvider = DBProvider();
+
+  /// --- Suche GET-Request ---
   Future<List> searchArtist() async {
     globals.functionToCall = "search.php?s=";
     return APIProvider().getRequest();
@@ -14,6 +19,21 @@ class SucheFunctions {
   // --- Wenn keine Suche aktiv ---
   Future<List> noSearch() async {
     return [];
+  }
+
+  // --- Artist aus DB löschen ---
+  clearArtists() async {
+    final db = await dbProvider.database;
+    final res = db.rawDelete('DELETE FROM artists');
+    return res;
+  }
+
+  // --- artist insert in db ---
+  createArtist(ArtistModel newArtist) async {
+    await clearArtists();
+    final db = await dbProvider.database;
+    final res = db.insert("artists", newArtist.toMap());
+    return res;
   }
 }
 

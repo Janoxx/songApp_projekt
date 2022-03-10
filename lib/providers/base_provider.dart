@@ -25,24 +25,15 @@ class DBProvider {
 
     const initScript = [
       '''
-        CREATE TABLE artists(artistID INTEGER PRIMARY KEY, artistName TEXT, artistFollowers INTEGER, artistGenre TEXT, artistImageURL TEXT, artistSpotifyURL TEXT)
+        CREATE TABLE artists(idArtist INTEGER PRIMARY KEY, strArtist TEXT, intBornYear INTEGER, strStyle TEXT, strGenre TEXT, strWebsite TEXT, strBiographyEN TEXT, strBiographyDE TEXT, strArtistThumb TEXT, strCountryCode TEXT, strArtistBanner TEXT)
       ''',
 
       '''
-        CREATE TABLE tracks(trackID INTEGER PRIMARY KEY, trackName TEXT, trackURL TEXT, trackDuration INTEGER, trackRelease TEXT, artistID INTEGER, albumID INTEGER, test INTEGER)
+        CREATE TABLE tracks(idTrack INTEGER PRIMARY KEY, idAlbum INTEGER, idArtist INTEGER, strTrack TEXT, strAlbum TEXT, strArtist TEXT, intDuration INTEGER, strGenre TEXT, strStyle TEXT, strTrackThumb TEXT, intTotalPlays INTEGER)
       ''',
 
       '''
-        CREATE TABLE albums(albumID INTEGER PRIMARY KEY, albumTotalTracks INTEGER, albumName TEXT, albumURL TEXT, albumImageURL TEXT, albumGenre TEXT, artistID INTEGER)
-      ''',
-
-      '''
-        CREATE TABLE settings(settingID INTEGER PRIMARY KEY)
-      '''
-
-
-      '''
-        CREATE TABLE test(ID INTEGER PRIMARY KEY, name TEXT, rarity TEXT, special_skill TEXT, debut_tour TEXT, date_added TEXT)
+        CREATE TABLE albums(idAlbum INTEGER PRIMARY KEY, idArtist INTEGER, strAlbum TEXT, strArtist TEXT, intYearReleased INTEGER, strStyle TEXT, strGenre TEXT, strAlbumThumb TEXT, strDescriptionEN TEXT, strDescriptionDE TEXT)
       ''',
     ];
 
@@ -71,7 +62,4 @@ class DBProvider {
     final path = join(documentsDirectory.path, 'releaseRadar.db');
     await deleteDatabase(path);
   }
-
-  
-
 }
