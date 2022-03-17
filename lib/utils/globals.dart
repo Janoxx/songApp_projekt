@@ -4,22 +4,42 @@ library songapp_projekt.globals;
 // --- General ---
 int currentIndex = 0;
 String appbarName = "Dashboard";
-String currentVersion = "0.0.7";
+String currentVersion = "BETA 1.0";
 
 // --- API ---
 String apiToken = "523532";
 String search = "";
 bool isSearchTrue = false;
-var functionToCall;
 
-// --- Profile ---
-String profileName = "";
-String profileImage = "";
-String profileStyle = "";
-String profileBirthday = "";
-String profileOrigin = "";
-String profileBio = "";
-String profileBanner = "";
+// --- Artist ---
+String idArtist = "0";
+String strArtist = "";
+String strArtistThumb = "";
+String strStyle = "";
+String intBornYear = "";
+String strCountryCode = "";
+String strBiography = "";
+String strWebsite = "";
+String isFollowed = "0";
+String notiz = "";
+
+String tempFollow = "";
+
+// --- Albums ---
+String idAlbum = "0";
+String idArtistAlbum = "0";
+String strAlbum = "";
+String strArtistAlbum = "";
+String intYearReleasedAlbum = "";
+String strAlbumThumb = "";
+
+// --- Dashboard ---
+String currentArtist = "";
+String currentAlbum = "";
+int currentAlbumID = 0;
+
+// --- Tracks ---
+int tempAlbum = 0;
 
 // --- Testing ---
 String arg1 = "drivers";

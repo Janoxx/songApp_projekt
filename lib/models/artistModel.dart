@@ -1,9 +1,9 @@
 // ignore_for_file: file_names, unnecessary_this, prefer_collection_literals
 class ArtistModel {
   
-  int idArtist = 0;
+  String idArtist = "";
   String strArtist = "";
-  int intBornYear = 0;
+  String intBornYear = "";
   String strStyle = "";
   String strGenre = "";
   String strWebsite = "";

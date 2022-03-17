@@ -63,7 +63,7 @@ class _AppInfoState extends State<AppInfo> {
           Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(
-                "Hier siehst du in einer Übsersicht, sortiert nach Tag, Woche oder Monat, die aktuellen Realeases der Künstler und Künstlerinnen denen du folgst."),
+                "Hier siehst du in einer Übsersicht, sortiert nach zuletzt veröffentlichten Alben, die aktuellen Realeases der Künstler und Künstlerinnen denen du folgst."),
           ),
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -73,7 +73,7 @@ class _AppInfoState extends State<AppInfo> {
           Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(
-                "Hier kannst du nach deinen Lieblingskünstler und Lieblingskünstlerinnen suchen, ihnen folgen und ihre Profile aufrufen."),
+                "Hier kannst du nach deinen Lieblingskünstler und Lieblingskünstlerinnen suchen und ihre Profile aufrufen."),
           ),
           Padding(
             padding: EdgeInsets.all(8.0),
@@ -83,7 +83,7 @@ class _AppInfoState extends State<AppInfo> {
           Padding(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
             child: Text(
-                "Hier siehst du eine Übersicht deiner gefolgten Künstler und Künstlerinnen. Du kannst gefolgten Künstlern und Künstlerinnen hier wieder entfolgen und auf ihr Profil zugreifen. "),
+                "Hier siehst du eine Übersicht deiner gefolgten Künstler und Künstlerinnen. Hier kommst Du auf das Profil deiner gefolgten Künstler:innen und bekommst die Möglichkeit, ihnen wieder zu entfolgen oder zusätzliche Informationen einzusehen."),
           ),
         ],
       ),

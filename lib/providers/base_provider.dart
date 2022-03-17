@@ -25,15 +25,15 @@ class DBProvider {
 
     const initScript = [
       '''
-        CREATE TABLE artists(idArtist INTEGER PRIMARY KEY, strArtist TEXT, intBornYear INTEGER, strStyle TEXT, strGenre TEXT, strWebsite TEXT, strBiographyEN TEXT, strBiographyDE TEXT, strArtistThumb TEXT, strCountryCode TEXT, strArtistBanner TEXT)
+        CREATE TABLE artists(idArtist INTEGER PRIMARY KEY, strArtist TEXT, intBornYear INTEGER, strStyle TEXT, strWebsite TEXT, strBiography TEXT, strArtistThumb TEXT, strCountryCode TEXT, isFollowed INTEGER, followDate NUMERIC, notiz TEXT)
       ''',
 
       '''
-        CREATE TABLE tracks(idTrack INTEGER PRIMARY KEY, idAlbum INTEGER, idArtist INTEGER, strTrack TEXT, strAlbum TEXT, strArtist TEXT, intDuration INTEGER, strGenre TEXT, strStyle TEXT, strTrackThumb TEXT, intTotalPlays INTEGER)
+        CREATE TABLE tracks(idTrack INTEGER PRIMARY KEY, idAlbum INTEGER, idArtist INTEGER, strTrack TEXT, strAlbum TEXT, strArtist TEXT, intDuration INTEGER)
       ''',
 
       '''
-        CREATE TABLE albums(idAlbum INTEGER PRIMARY KEY, idArtist INTEGER, strAlbum TEXT, strArtist TEXT, intYearReleased INTEGER, strStyle TEXT, strGenre TEXT, strAlbumThumb TEXT, strDescriptionEN TEXT, strDescriptionDE TEXT)
+        CREATE TABLE albums(idAlbum INTEGER PRIMARY KEY, idArtist INTEGER, strAlbum TEXT, strArtist TEXT, intYearReleased INTEGER, strAlbumThumb TEXT)
       ''',
     ];
 

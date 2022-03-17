@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:songapp_projekt/providers/base_provider.dart';
+import 'package:songapp_projekt/utils/globals.dart' as globals;
 import 'artistinfo.dart';
 
 // --- Init Main Widgets ---
@@ -12,46 +13,93 @@ class Follows extends StatefulWidget {
 }
 
 class _FollowsState extends State<Follows> {
-  Icon followIcon = Icon(
-    Icons.check_box,
-    size: 35,
-  );
+  DBProvider dbProvider = DBProvider();
+  bool follow = false;
+
+  Future<List> showFollowedArtists() async {
+    final db = await dbProvider.database;
+    final res = await db.rawQuery('SELECT * FROM artists ORDER BY strArtist ASC');
+    return res;
+  }
+
+  Future<List> noArtists() async {
+    return [];
+  }
+
+  // --- Lösche Artist aus DB ---
+  Future deleteArtist() async {
+    final db = await dbProvider.database;
+    final res = await db.rawQuery('DELETE FROM artists WHERE idArtist = ' + globals.idArtist);
+    return res;
+  }
+
+  // --- Lade Seiteninhalt neu ---
+  Future<void> onRefresh(BuildContext context) async {
+    await Future.delayed(Duration(seconds: 1));
+
+    setState(() {
+      Follows();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
-        ListTile(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Artistinfo()));
+      body: RefreshIndicator(
+        
+        color: Colors.blue,
+        onRefresh: (){
+          return onRefresh(context);
           },
-          leading: CircleAvatar(
-              radius: 20,
-              foregroundImage: NetworkImage(
-                  "https://i1.sndcdn.com/avatars-000731587054-tor78i-t500x500.jpg")),
-          title: Text("Darude"),
-          subtitle: Text("Gefolgt seit: xx.xx.xxxx"),
-          trailing: IconButton(
-            icon: followIcon,
-            onPressed: () {
-              setState(() {
-                if (followIcon.icon == Icons.check_box) {
-                  followIcon = Icon(
-                    Icons.check_box_outline_blank,
-                    size: 35,
-                  );
-                } else {
-                  followIcon = Icon(
-                    Icons.check_box,
-                    size: 35,
-                  );
-                }
-              });
-            },
-          ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text("Gefolgte Künstler:innen:"),
+                  SizedBox(height: 10),
+                  Expanded(
+                    child: FutureBuilder<List>(
+                      future: showFollowedArtists(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if(!snapshot.hasData) {
+                          return Text("");
+                        } else {
+                          return ListView.separated(
+                            separatorBuilder: (context, index) => Divider(thickness: 1.5),
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int i) {
+                              return ListTile(
+                                onTap: (){
+                                  globals.idArtist = snapshot.data[i]["idArtist"].toString();
+                                  globals.strArtist = snapshot.data[i]["strArtist"] ?? "Kein Name gefunden!";
+                                  globals.strArtistThumb = snapshot.data[i]["strArtistThumb"] ?? "https://cdn.icon-icons.com/icons2/1674/PNG/512/questionmarkcircle_110957.png";
+                                  globals.strBiography = snapshot.data[i]["strBiography"] ?? "Keine Biographie gefunden!";
+                                  globals.intBornYear = snapshot.data[i]["intBornYear"].toString() == "" ? "Kein Geburtsjahr gefunden!" : snapshot.data[i]["intBornYear"].toString();
+                                  globals.strCountryCode = snapshot.data[i]["strCountryCode"] ?? "Kein Herkunftsland gefunden!";
+                                  globals.strStyle = snapshot.data[i]["strStyle"] ?? snapshot.data[i]["strGenre"] ?? "Kein Genre gefunden!";
+                                  globals.strWebsite = snapshot.data[i]["strWebsite"];
+      
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Artistinfo()));
+                                },
+                                leading: CircleAvatar(radius: 30, foregroundImage: NetworkImage(snapshot.data[i]["strArtistThumb"] ?? "https://cdn.icon-icons.com/icons2/1674/PNG/512/questionmarkcircle_110957.png")),
+                                title: Text(snapshot.data[i]["strArtist"], style: TextStyle(fontWeight: FontWeight.bold)),
+                                subtitle: Text("Gefolgt seit: " + snapshot.data[i]["followDate"]),
+                                trailing: Icon(Icons.arrow_right_outlined)
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
-        Divider(thickness: 1.5),
-      ]),
+      ),
     );
   }
 }

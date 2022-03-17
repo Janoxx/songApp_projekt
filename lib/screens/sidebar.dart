@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:songapp_projekt/screens/appinfo.dart';
 import 'package:songapp_projekt/screens/changelog.dart';
-import 'package:songapp_projekt/screens/settings.dart';
-import 'package:songapp_projekt/screens/testPage.dart';
+// import 'package:songapp_projekt/screens/settings.dart';
+// import 'package:songapp_projekt/screens/testPage.dart';
 
 // --- Init Main Widget ---
 class Sidebar extends StatefulWidget {
@@ -15,6 +17,40 @@ class Sidebar extends StatefulWidget {
 }
 
 class _SidebarState extends State<Sidebar> {
+
+Future<void> exitAlert(BuildContext context) async {
+    // --- Accept Button ---
+    Widget acceptButton = TextButton(
+     child: Text("Ja"),
+      onPressed: (){
+        exit(0);
+      }
+    );
+
+    // --- Deny Button ---
+    Widget denyButton = TextButton(
+     child: Text("Nein", style: TextStyle(color: Colors.white)),
+      onPressed: (){
+        Navigator.pop(context);
+      },
+    );
+
+    // --- Alert Popup ---
+    AlertDialog alertFollow = AlertDialog(
+      title: Text("App beenden?"),
+      content: Text("Möchtest du die App wirklich beenden?"),
+      actions: [acceptButton, denyButton],
+    );
+
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return alertFollow;
+      }
+    );
+  }
+
+
 // --- Custom Drawer Header für die Sidebar ---
   Widget drawerHeader(BuildContext context) {
     return DrawerHeader(
@@ -57,14 +93,14 @@ class _SidebarState extends State<Sidebar> {
       child: ListView(
         children: [
           drawerHeader(context),
-          ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Einstellungen"),
-              trailing: Icon(Icons.arrow_right),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Settings()));
-              }),
+          // ListTile(
+          //     leading: Icon(Icons.settings),
+          //     title: Text("Einstellungen"),
+          //     trailing: Icon(Icons.arrow_right),
+          //     onTap: () {
+          //       Navigator.push(context,
+          //           MaterialPageRoute(builder: (context) => Settings()));
+          //     }),
           const Divider(
             thickness: 1.5,
           ),
@@ -87,20 +123,23 @@ class _SidebarState extends State<Sidebar> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AppInfo()));
               }),
-          const Divider(
+              const Divider(
             thickness: 1.5,
           ),
-          ListTile(
-              leading: Icon(Icons.developer_mode),
-              title: Text("Developer Test-Seite"),
-              trailing: Icon(Icons.arrow_right),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TestPage()));
-              }),
-          const Divider(
-            thickness: 1.5,
-          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(48, 8, 48, 8),
+            child: ElevatedButton(
+              onPressed: (){exitAlert(context);}, 
+              child: Text("Beenden")),
+          )
+          // ListTile(
+          //     leading: Icon(Icons.developer_mode),
+          //     title: Text("Developer Test-Seite"),
+          //     trailing: Icon(Icons.arrow_right),
+          //     onTap: () {
+          //       Navigator.push(context,
+          //           MaterialPageRoute(builder: (context) => TestPage()));
+          //     }),
         ],
       ),
     );

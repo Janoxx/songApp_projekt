@@ -1,17 +1,17 @@
 // ignore_for_file: file_names, unnecessary_this, prefer_collection_literals
 class TrackModel {
 
-  int idTrack = 0;
-  int idAlbum = 0;
-  int idArtist = 0;
+  String idTrack = "";
+  String idAlbum = "";
+  String idArtist = "";
   String strTrack = "";
   String strAlbum = "";
   String strArtist = "";
-  int intDuration = 0;
+  String intDuration = "";
   String strGenre = "";
   String strStyle = "";
   String strTrackThumb = "";
-  int intTotalPlays = 0;
+  String intTotalPlays = "";
 
   TrackModel(this.idTrack, this.idAlbum, this.idArtist, this.strTrack, this.strAlbum, this.strArtist, this.intDuration, this.strGenre, this.strStyle, this.strTrackThumb, this.intTotalPlays);
 

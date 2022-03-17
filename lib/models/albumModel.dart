@@ -1,11 +1,11 @@
 // ignore_for_file: file_names, unnecessary_this, prefer_collection_literals
 class AlbumModel {
 
-  int idAlbum = 0;
-  int idArtist = 0;
+  String idAlbum = "";
+  String idArtist = "";
   String strAlbum = "";
   String strArtist = "";
-  int intYearReleased = 0;
+  String intYearReleased = "";
   String strStyle = "";
   String strGenre = "";
   String strAlbumThumb = "";

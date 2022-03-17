@@ -14,6 +14,27 @@ class _ChangelogState extends State<Changelog> {
       children: [
         Padding(
           padding: EdgeInsets.all(8.0),
+          child: Text("Version BETA 1.0",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "- Vervollständigung der Such-Funktion via REST-API\n\n"
+            "- Anlegen der Datenbankstruktur\n\n"
+            "- Speichern der 'gefolgten Artists' + Alben/Tracks in die Datenbank\n\n"
+            "- Abrufen via SQL und Darstellung aller Daten\n\n"
+            "- Ausbau der GET-Requests an die API\n\n"
+            "- Anlegen und Gestaltung der Album-Infoseite\n\n"
+            "- Einige Bugfixes\n\n"
+            "- Logout-Button in der Sidebar eingebaut"
+          ),
+        ),
+        Divider(
+          thickness: 1.5,
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text("Version 0.0.7",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28)),
         ),

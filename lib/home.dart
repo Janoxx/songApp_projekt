@@ -26,34 +26,37 @@ class _HomeState extends State<Home> {
   // --- App "Grundgerüst" ---
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: mainAppBar(),
-        body: widgets[globals.currentIndex],
-        drawer: const Sidebar(),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: globals.currentIndex,
-          selectedItemColor: Colors.red,
-          elevation: 0,
-          onTap: (index){
-            setState(() {
-              globals.currentIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard_outlined),
-              label: 'Dashboard'
-              ),
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: mainAppBar(),
+          body: widgets[globals.currentIndex],
+          drawer: const Sidebar(),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: globals.currentIndex,
+            selectedItemColor: Colors.red,
+            elevation: 0,
+            onTap: (index){
+              setState(() {
+                globals.currentIndex = index;
+              });
+            },
+            items: const [
               BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'Suche'
-              ),
-              BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined),
-              label: 'Folge ich'
-              ),
-          ],
+                icon: Icon(Icons.dashboard_outlined),
+                label: 'Dashboard'
+                ),
+                BottomNavigationBarItem(
+                icon: Icon(Icons.search_outlined),
+                label: 'Suche'
+                ),
+                BottomNavigationBarItem(
+                icon: Icon(Icons.person_outlined),
+                label: 'Folge ich'
+                ),
+            ],
+          ),
         ),
       );
   }
