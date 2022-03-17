@@ -56,10 +56,11 @@ class _AlbumInfoState extends State<AlbumInfo> {
                             itemBuilder: (BuildContext context, int i) {
                               // --- Duration in Minuten umrechnen ---
                               Duration timeDuration = Duration(milliseconds: snapshot.data[i]["intDuration"]);
+                              int timeSeconds = timeDuration.inSeconds;
                               return ListTile(
                                 leading: Icon(Icons.music_note, color: Colors.red),
                                 title: Text(snapshot.data[i]["strTrack"]),
-                                trailing: Text(timeDuration.toString()),
+                                trailing: Text(timeSeconds.toString() + " Sek."),
                               );
                             },
                           );
